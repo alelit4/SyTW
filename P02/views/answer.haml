@@ -1,0 +1,30 @@
+.row
+	.six.columns
+		<img class="image" src=/images/#{@computer_throw}.png/>
+		#computer
+			%h4 Computer
+	.six.colums.offset-by-six
+		<img class="image" src=/images/#{@player_throw}.png/>
+		#user
+			%h4 You choose
+.row
+	#answer
+		= @answer
+.row
+	.six.columns
+		#computer
+			%h4
+				Computer = #{session[:pc]}
+	.six.colums.offset-by-six
+		#user
+			%h4
+				User =  #{session[:user]}
+.row
+	.four.columns
+		%form{:action => "/logout", :method => "POST"}
+			#boton2
+				%input{:type => "submit", :value => "Clear score!"}
+	.six.colums.offset-by-five
+		%form{:action => "/throw/:type", :method => "POST"}
+			#boton3
+				%input{:type => "submit", :value => "Try again!"}

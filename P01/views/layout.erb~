@@ -1,0 +1,33 @@
+<html>
+   <link rel ="stylesheet" type="text/css" href="/style.css" />
+   <link rel ="stylesheet" type="text/css" href="/foundation.css" />
+   <head>
+      <div class="row">
+	 <div class="seven columns centered">
+	    <div class ="header" id ="site-title">
+	       <tittle> Rock, Paper and Scissors </tittle>
+	    </div>
+	 </div>
+      </div>
+   </head>
+   <body>
+      <div class="row">
+	 <div class="seven columns centered">
+	    <div class ="content">
+	       <%= yield %>
+	    </div>
+	 </div>
+      </div>
+      <div class="row">
+	 <div class ="footer">
+	    <div class="five columns">
+	       <h1> Alexandra Rivero </h1>
+	    </div>
+	    <div class="seven columns">
+	       <h2> Sistemas y Tecnologías Web </h2>
+	    </div>
+	 </div>
+      </div>
+
+   </body>
+</html>

@@ -1,0 +1,592 @@
+/**
+ * Styles start here
+ */
+ 
+body { 
+	color: #333;
+	font: 16px/28px Georgia, 'Times New Roman', Times, serif;
+	background-color: #eee; 
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent),
+							color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)),
+							color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent),
+							to(transparent)); /* Old webkit syntax */
+	background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+							transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+							transparent 75%, transparent); /* New webkit syntax */					
+	background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+							transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+							transparent 75%, transparent); /* Firefox */
+	background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+							transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+							transparent 75%, transparent); /* Opera */
+	background-size: 16px 16px;
+}
+
+html { overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+#wrapper {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+/**
+ * Typography and default HTML elements
+ */
+
+a {
+	color: #F71570;
+	text-decoration: none;
+	-webkit-transition: all 100ms linear;
+	/*-moz-transition: all 100ms linear;*/
+	transition: all 100ms linear;
+}
+
+a:hover {
+	color: #AC0649;
+	text-shadow: 0 1px 0 #fff;
+}
+
+a:active { outline: none; }
+
+p, dl, hr, h1, h2, h3,
+ol, ul, dd, pre, table, fieldset {
+	margin-bottom: 20px;
+}
+
+
+/* Headings */
+h1, h2, h3, h4, h5, h6, #option {
+	font-family: 'Droid Serif', sans-serif;
+	text-shadow: 0 1px 0 #fff;
+}
+
+h1 {
+	font-size: 28px;
+}
+
+h2 {
+	font-size: 24px;
+	
+}
+
+
+
+
+h3 {
+	font-size: 26px;
+	letter-spacing: -1px;
+}
+
+.post h3 {
+	margin: 30px 0 20px;
+}
+
+h4 {
+	font-size: 21px;
+	 padding-left: 50px;
+	
+}
+
+h5 {
+	font-size: 18px;
+}
+
+h6 {
+	font-weight: normal;
+	font-size: 16px;
+}
+
+.footer h1 {
+	font-size: 20px;
+}
+
+.footer h2 {
+	font-size: 15px;
+}
+
+
+/* These selection declarations have to be separate
+   Also: hot pink! */
+::-moz-selection{ background: #FF5E99; color: #fff; text-shadow: none; }
+::selection { background: #FF5E99; color: #fff; text-shadow: none; }
+
+/**
+ * Header
+ */
+
+.header {
+	padding: 30px 20px 30px;
+	text-align:center;
+}
+
+#site-title {
+	color: #1e1e1e;
+	font: bold 42px 'Droid Serif', sans-serif;
+	float: left;
+	letter-spacing: -3px;
+	text-shadow: 0 1px 0 #fff;
+	-webkit-transition: all 200ms linear;
+	-moz-transition: all 200ms linear;
+	transition: all 200ms linear;
+	
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	padding-left: 150px;
+}
+
+#site-title:hover {
+	background: none;
+	text-shadow: 0 1px 0 #fff;
+	
+	-webkit-transform: scale(1.1) translateZ(0);
+	transform: scale(1.1) translateZ(0);
+}
+
+#site-description {
+	font: normal 18px 'Droid Serif', sans-serif;
+	float: right;
+	padding-top: 32px;
+}
+
+/**
+ * Content
+ */
+ 
+.content { 
+	background: rgba(204, 204, 204, .4);
+	border-radius: 5px 5px 10px 10px;
+	width: 560px;
+	padding: 40px 20px 10px 20px;
+	-webkit-box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.4), 0px 0px 15px rgba(204, 204, 204, 0.5);
+	-moz-box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.4), 0px 0px 15px rgba(204, 204, 204, 0.5);
+	box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.4), 0px 0px 15px rgba(204, 204, 204, 0.5);
+}
+
+
+
+#option {
+
+	font-family: bold 'Droid Serif', sans-serif;
+   text-shadow: 0 1px 0 #fff;
+   font-size: 40px;
+   text-align:  left; 
+   padding-left: 50px;
+   padding-bottom: 30px;
+	
+}
+
+#boton1 {
+   font-size: 100px;
+   padding: 0px 10px 20px 350px;
+}
+
+#boton2 {
+
+   font-size: 100px;
+	padding: 0px 10px 20px 50px;
+}
+
+
+#boton3 {
+
+
+   font-size: 100px;
+	padding: 0px 30px 20px 80px;
+}
+	
+
+/**
+ * Navigation
+ */
+ 
+#menu {
+	margin: 0 0 60px 20px;
+}
+
+#menu ul {
+	list-style: none;
+}
+
+#menu li {
+	float: left;
+	margin: 0 20px 0 0;
+	position: relative;
+}
+
+#menu a {
+	background: #f3f3f3; /* Fallback */
+	background: -moz-linear-gradient(top, #f3f3f3 0%, #ececec 100%); /* FF 3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3f3f3), color-stop(100%,#ececec)); /* Chrome, Safari 4+ */
+	background: -webkit-linear-gradient(top, #f3f3f3 0%,#ececec 100%); /* Chrome 10+, Safari 5.1+ */
+	background: -o-linear-gradient(top, #f3f3f3 0%,#ececec 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #f3f3f3 0%,#ececec 100%); /* IE10+ */
+	background: linear-gradient(top, #f3f3f3 0%,#ececec 100%); /* W3C */
+	
+	border: 1px solid;
+	border-color: #fff #c9c9c9 #c9c9c9 #fff;
+	border-radius: 5px;
+	display: block;
+	font: 14px 'Droid Serif', sans-serif;
+	padding: 14px 20px;
+	margin-bottom: 5px;
+	text-shadow: 0 1px 0 #fff;
+}
+
+#menu a:active {
+	-webkit-box-shadow: inset 1px 1px 5px #ccc;
+	-moz-box-shadow: inset 1px 1px 5px #ccc;	
+	box-shadow: inset 1px 1px 5px #ccc;	
+}
+
+#menu a:hover {
+	color: #AC0649;
+	border-radius: 10px 0 10px 0;
+	opacity: 0.75;
+}
+
+/* Current nav, buttons, more-link */
+#menu .current > a,
+.btn,
+.more-link,
+input[type=submit],
+legend {
+	background: #fa4fab; /* Fallback */
+	background: -moz-linear-gradient(top, #fa4fab 0%, #f7387c 100%); /* FF 3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fa4fab), color-stop(100%,#f7387c)); /* Chrome, Safari 4+ */
+	background: -webkit-linear-gradient(top, #fa4fab 0%,#f7387c 100%); /* Chrome 10+, Safari 5.1+ */
+	background: -o-linear-gradient(top, #fa4fab 0%,#f7387c 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #fa4fab 0%,#f7387c 100%); /* IE10+ */
+	background: linear-gradient(top, #fa4fab 0%,#f7387c 100%); /* W3C */
+	
+	color: #fff;
+	border-color: transparent;
+	border-radius: 10px 0 10px 0;
+	font-weight: bold;
+	padding: 14px 20px;
+	text-shadow: 0 1px 0 #AC0649;
+	-webkit-transition: all 100ms linear;
+	/*-moz-transition: all 100ms linear;*/
+	transition: all 100ms linear;
+}
+
+#menu .current > a:hover,
+.btn:hover,
+.more-link:hover,
+input[type=submit]:hover {
+	border-radius: 0 10px 0 10px;
+	color: #fff;
+	opacity: 1;
+}
+
+	/* Level 2 */
+	#menu ul ul {
+		display: none;
+		min-width: 150px;
+		position: absolute;
+		top: 100%; left: 0;
+		z-index: 100;
+		-webkit-box-shadow: 0px 0px 6px rgba(0,0,0, 0.3);
+		-moz-box-shadow: 0px 0px 6px rgba(0,0,0, 0.3);
+		box-shadow: 0px 0px 6px rgba(0,0,0, 0.3);
+	}
+	
+	#menu li:hover > ul { display: block;  }
+	
+	#menu ul ul li {
+		float: none;
+		margin: 0;
+	}
+	
+	#menu ul ul li a {
+		border-radius: 0 !important;
+		margin-bottom: 0;
+	}
+	
+	#menu ul ul li a:hover {
+		opacity: 1;
+	}
+	
+
+	
+/* Post thumbnail and images */
+#boton {
+   	background: #f4f4f4;
+	border: 2px solid #cecdcd;
+	border-radius: 3px 5px 5px 5px;
+	float: left;
+	padding: 10px;
+	text-align: center;
+	-webkit-transition: border 200ms ease;
+	/*-moz-transition: border 200ms ease;*/
+	transition: border 200ms ease;
+   
+}
+
+
+/* Pictures' answer */
+.image {
+
+   height: 30%;
+   width: 80%;
+   
+}
+
+#user h4{
+
+   margin-left: 50px;
+}
+
+#computer h4{
+   margin-left: 50px;
+   
+}
+
+#answer{
+   
+   color: #FF5E99;
+   font: bold 30px 'Droid Serif', sans-serif;
+   float: left;
+   letter-spacing: -1px;
+   text-shadow: 0 1px 0 #fff;
+   margin-left: 60px;
+   padding: 20px;
+
+
+}
+
+/**
+ * Sidebar
+ */
+
+#sidebar {}
+
+.widget {
+	border-top: 1px solid rgba(255, 255, 255, 0.6);
+	border-bottom: 1px solid #ccc;
+	padding: 30px 0;
+}
+
+.widget:first-child {
+	border-top: none;
+	padding-top: 0;
+}
+
+.widget:last-child {
+	border-bottom: none;
+}
+
+	/* Lists in widgets */
+	.widget li {
+		line-height: 35px;
+	}
+	
+	.widget li a { 
+		color: #333;
+		-webkit-transition: margin-left 300ms linear;
+		/*-moz-transition: margin-left 300ms linear;*/
+		transition: margin-left 300ms linear;
+	}
+	
+	.widget li a:hover {
+		color: #AC0649;
+		margin-left: 10px;
+	}
+
+/*
+ * Footer
+ */
+ 
+#footer {
+	color: #555;
+	padding: 40px 20px;
+	text-shadow: 1px 1px 0px #fff;
+}
+
+#footer a {
+	font: 14px 'Droid Serif', Georgia, serif;
+}
+
+/**
+ * Forms
+ */
+ 
+	/* 1) Make inputs and buttons play nice in IE: www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
+	   2) WebKit browsers add a 2px margin outside the chrome of form elements. 
+		  Firefox adds a 1px margin above and below textareas 
+	   3) Align to baseline */
+	button, input, select, textarea { width: auto; overflow: visible; margin: 0; vertical-align: baseline; outline: none; }
+
+	/* 1) Remove default scrollbar in IE: www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/
+   	   2) Align to text-top */
+	textarea { overflow: auto; vertical-align: text-top; }
+	
+	/* Hand cursor on clickable input elements */
+	label[for], input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+	
+	/* Remove extra padding and inner border in Firefox */
+	input::-moz-focus-inner,
+	button::-moz-focus-inner { border: 0; padding: 0; }
+	
+	input[type="button"],
+	input[type="checkbox"],
+	input[type="radio"],
+	input[type="submit"],
+	select {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	input[type="text"],
+	input[type="password"],
+	textarea {
+		-webkit-appearance: textfield;
+		-moz-box-sizing: content-box;
+		-webkit-box-sizing: content-box;
+		box-sizing: content-box;
+	}
+	
+button, input, select, textarea, label {
+	font: 20px 'Droid Serif', Georgia, serif;	
+}
+
+label {
+	display: block;
+	font-weight: bold;
+	margin: 0 0 7px 10px;
+}
+
+fieldset {
+	background: rgba(204, 204, 204, 0.2);
+	border: 1px solid #c9c9c9;
+	border-radius: 5px;
+	padding: 20px;
+	-webkit-box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.7);
+	-moz-box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.7);
+	box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+legend {
+	font: bold 14px 'Droid Serif', Georgia, serif;
+	padding: 10px 12px;	
+}
+
+/* Input fields */
+input,
+textarea {
+	background: #fff;
+	border: none;
+	border-radius: 20px;
+	color: #777;
+	padding: 10px 15px;
+	-webkit-box-shadow: 0px 1px 1px #bbb;
+	-moz-box-shadow: 0px 1px 1px #bbb;
+	box-shadow: 0px 1px 1px #bbb;
+}
+
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus {
+	color: #333;
+	-webkit-box-shadow: 0px 1px 1px #ccc, inset 1px 2px 1px rgba(250, 79, 170, 0.3);
+	-moz-box-shadow: 0px 1px 1px #ccc, inset 1px 2px 1px rgba(250, 79, 170, 0.3);
+	box-shadow: 0px 1px 1px #ccc, inset 1px 2px 1px rgba(250, 79, 170, 0.3);
+}
+
+textarea {
+	border-radius: 10px;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+select {
+	margin-left: 10px;
+}
+
+/* Submit */
+input[type="submit"] {
+	color: #fff;
+}
+
+input[type="submit"]:hover {
+	text-shadow: 0 1px 0 #AC0649;
+}
+
+/* Search inputs */
+input[type="search"] {
+	background: #fff url(images/search.png) no-repeat 10px center;
+	padding-left: 25px;
+	-webkit-appearance: none;
+}
+
+input[type="search"]::-webkit-search-results-button {
+	-webkit-appearance: none;
+}
+
+.searchform input[type="search"] {
+	padding-right: 0;
+	max-width: 200px;
+}
+
+.searchform input[type="submit"] {
+	padding: 10px 12px;
+	float: right;
+}
+
+/**
+ * Misc
+ */
+ 
+.alignleft { float: left; }
+.alignright { float: right; }
+.clear { clear: both; }
+.sep { padding: 0 5px; }
+
+.hide { display: none; }
+
+.success {
+	background: url(images/accepted.png) no-repeat 10px center;
+	background-color: rgb(231, 247, 211);
+	background-color: rgba(231, 247, 211, 0.5);
+	border: 1px solid #6c3;
+	border-radius: 5px;
+	padding: 20px 0 20px 80px;
+}
+
+.error {
+	background: url(images/cancel.png) no-repeat 10px center;
+	background-color: rgb(255, 235, 232);
+	background-color: rgba(255, 235, 232, 0.5);
+	border: 1px solid #C00;
+	border-radius: 5px;
+	color: #C00;
+	padding: 20px 0 20px 80px;
+}
+
+.warning {
+	background: #fffbbc;
+	border: 1px solid #E6DB55;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+div.warning { margin-bottom: 20px; }
+
+/**
+ * Media queries for responsive design.
+ * These follow after, and will override, the primary styles
+ * The closing /mediaquery comment is required by respond.js min/max-width Media Query polyfill
+ */
+
+@media only screen and (max-width: 1024px) {
+
+	/* Style adjustments for viewports 1024px and under go here */
+	#wrapper { width: 100%; }
+	#site-title a, #site-description { float: none; margin-bottom: 0; }
+	#main { width: 100%; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+	#content { float: none; width: 100%; }
+	#sidebar { float: none; margin-top: 20px; }
+	figure { margin-left: 0; }
+
+}/*/mediaquery*/

@@ -1,0 +1,22 @@
+<div class ="row">
+   <div class="six columns">
+      <img class="image" src=/images/<%= @computer_throw %>.png/>
+      <div id="computer"> <h4> Computer </h4> </div>
+   </div>
+   <div class="six colums offset-by-six ">
+      <img class="image" src=/images/<%= @player_throw %>.png/> 
+      <div id="user"> <h4> You choose </h4> </div>
+   </div>
+</div>
+
+   <div class ="row">
+	 <div id ="answer"> <%= @answer %> </div>
+   </div>
+   
+   <form action="/throw/:type" method ="POST">
+      <div id="boton1">
+      <input type="submit" value="Try again!" >
+      </div>
+   </form>
+
+

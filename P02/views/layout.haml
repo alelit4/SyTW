@@ -1,0 +1,18 @@
+%html
+	%link{:href => "/style.css", :rel => "stylesheet", :type => "text/css"}/
+	%link{:href => "/foundation.css", :rel => "stylesheet", :type => "text/css"}/
+	%head
+		.row
+			.ten.columns.centered
+				.header
+					#site-title
+						Rock, Paper and Scissors
+	%body
+		.row
+			.seven.columns.centered
+				.content= yield
+		.row
+			.footer
+				.seven.columns.centered
+					%h1 Alexandra Rivero
+					%h2 Sistemas y Tecnologías Web
