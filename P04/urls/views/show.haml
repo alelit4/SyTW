@@ -1,7 +1,13 @@
+%div{:class => "row-fluid"}         
+    %div{:class => "span6 offset3"}  
+        %h2 Todas las URLs actuales
 - @all_urls.each do |url|
-    %p{:id => "line"} 
-        %p URL: #{url.url} 
-        -if url.custom
-            %p CUSTOM: http://#{settings.address}/#{url.custom}
-        %p ID: http://#{settings.address}/#{url.id} 
-        
+    %div{:class => "row-fluid"}         
+        %div{:class => "span6 offset2" , :id => "url"}  
+            %h6 URL #{url.id} : 
+            %a(href="#{url.url} ") #{url.url}
+            %p ID: http://#{settings.address}/#{url.id}  
+            -if url.custom
+                %p CUSTOM: http://#{settings.address}/#{url.custom}
+            
+            

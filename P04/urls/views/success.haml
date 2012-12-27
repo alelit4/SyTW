@@ -1,5 +1,7 @@
-%p #{params}
-%p http://#{address}/#{@short_url.id.to_s(36)}
-- if @short_url.custom
-      %b CUSTOM:
-      %a(href="http://#{address}/#{@short_url.custom}") http://#{address}/#{@short_url.custom}
+%div{:class => "row-fluid"}         
+    %div{:class => "span6 offset3"}  
+        %p #{params}
+        %p http://#{address}/#{@short_url.id.to_s(36)}
+        - if @short_url.custom
+            %b CUSTOM:
+            %a(href="http://#{address}/#{@short_url.custom}") http://#{address}/#{@short_url.custom}

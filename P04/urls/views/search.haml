@@ -1,11 +1,13 @@
-%h2 Search Form URL
-%form(action="/search_url" method="POST")
-    %label(for="url")
-    %input(type="text" name="url" id="url" placeholder="Introduce URL largo")
-    %input(type="submit" value="Find by URL" class="shorten")
-         
-%h2 Search Form id
-%form(action="/search_id" method="POST")
-    %label(for="url")
-    %input(type="text" name="url" id="url" placeholder="Introduce ID")
-    %input(type="submit" value="Find by ID" class="shorten")
+%div{:class => "row-fluid"}         
+    %div{:class => "span6 offset3"}  
+        %h2 Search Form URL
+        %form(action="/search_url" method="POST")
+            %label(for="url")
+            %input(type="text" name="url" id="url" placeholder="Introduce URL largo")
+            %input(type="submit" value="Find by URL" class="shorten")
+                 
+        %h2 Search Form id
+        %form(action="/search_id" method="POST")
+            %label(for="url")
+            %input(type="text" name="url" id="url" placeholder="Introduce ID")
+            %input(type="submit" value="Find by ID" class="shorten")

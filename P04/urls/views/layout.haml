@@ -2,7 +2,7 @@
 %html
     %header
         %link(rel="stylesheet" type="text/css" href="css/bootstrap.css")
-        %link(rel="javascript" type="text/javascript" href="js/jquery-1.8.3.min.js")
+        %script{:src => "js/jquery-1.8.3.min.js"}
     %body
         %div{:class => "row-fluid"}
             %div{:class => "span8 offset2", :id => "title"}
@@ -15,22 +15,23 @@
                     %input(type="text" name="url" id="url" placeholder="Introduce URL to short" )
                     %label(for="custom") puede añadirle un Custom (optional)
                     %input(type="text" name="custom" id="custom" placeholder="Introduce custom URL")
-                    %div{:class => "span1 offset3"}  
                     %input(type="submit" value="Shorten" class="shorten" )
         
-        %div{:class => "row-fluid"}  
-            %div{:class => "span4 offset2"}
-                %a(href="/show")Ver todas las URLs
-        
-        %div{:class => "row-fluid"}  
-            %div{:class => "span4 offset2"}
+       
+        %div{:class => "row-fluid", :id => "opciones" }  
+            %div{:class => "span3 offset3"}
                 %a(href="/show")Ver todas las URLs
             
-            %div{:class => "span4 offset4"}
+            %div{:class => "span3 "}
                 %a(href="/search")Buscar alguna URLs  
         
+            
+               
         =yield
         
-        %div{:class => "footer"}  
-            %h1 Alexandra  
+        %footer
+            %div{:class => "row-fluid"}  
+                %div{:class => "span2 offset8"}
+                    %div{:class => "footer"}  
+                        %p Alexandra Rivero
           

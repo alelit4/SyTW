@@ -1,2 +1,6 @@
-- if @short_url.present? && !@short_url.valid?
-  %p Invalid URL: #{@short_url.url}
+%div{:class => "row-fluid"}         
+    %div{:class => "span6 offset3"}  
+        - if @short_url.present? && !@short_url.valid?
+            %div{:class => "alert alert-error"}
+                %a.close{"data-dismiss" => "alert"} 
+                %p Invalid URL: #{@short_url.url}

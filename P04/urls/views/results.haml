@@ -1,5 +1,13 @@
-- if @url.nil?
-    %h1 Error! Url no encontrada!
-- else
-    %p URL corto = http://#{settings.address}/#{@url.id}
-    %p ULR largo = #{@url.url} 
+%div{:class => "row-fluid"}         
+    %div{:class => "span6 offset3"}  
+        - if @url.nil?
+            %div{:class => "alert alert-error"}
+                %a.close{"data-dismiss" => "alert"} 
+                %p Error! Url no encontrada!
+        - else
+            %h2 URL encontrado!  
+            %a(href="#{@url.url} ") #{@url.url}
+            %p ID: http://#{settings.address}/#{@url.id}  
+            -if @url.custom
+                %p CUSTOM: http://#{settings.address}/#{@url.custom}
+           

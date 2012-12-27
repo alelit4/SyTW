@@ -5950,10 +5950,21 @@ code {
 div#title h1 {
 	font-size: 80px;
 	padding-top: 10%;
+	padding-bottom: 10%;
 	
 }
 
 .shorten{
-	border-radius: 10px;
+	border-radius: 15px;
+}
+
+#opciones{
+	padding-top: 5%;
+	font-size: 20px;
 	
+}
+
+#url {
+	
+		padding-top: 2%;
 }
