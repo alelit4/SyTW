@@ -25,8 +25,13 @@ end
 
 
 post '/' do
-  @short_url = ShortenedUrl.find_or_create_by_url(params[:url])
-  if @short_url.valid?
+  if !params[:custom]
+    @short_url = ShortenedUrl.find_or_create_by_url params[:url]
+  else
+    @short_url = ShortenedUrl.find_or_create_by_url_and_custom(params[:url],params[:custom])
+  end
+ 
+   if @short_url.valid?
     haml :success, :locals => { :address => settings.address }
   else
     haml :index
@@ -34,11 +39,7 @@ post '/' do
 end
 
 get '/show' do
-  urls = ShortenedUrl.find(:all)
-  @all_urls = []
-  urls.each do |t|
-    @all_urls.push([t, t.url])
-  end
+  @all_urls = ShortenedUrl.find(:all)
   haml :show
 end
 

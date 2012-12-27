@@ -1,8 +1,7 @@
-- @all_urls.each do |i|
-
-    %h1 URL #{i[0].id}
-    %p URL corto = http://#{settings.address}/#{i[0].id}
-    %p ULR largo = #{i[1]} 
-    -if url.custom
-        %b CUSTOM: 
-        http://#{settings.address}/#{i[2].custom}
+- @all_urls.each do |url|
+    %p{:id => "line"} 
+        %p URL: #{url.url} 
+        -if url.custom
+            %p CUSTOM: http://#{settings.address}/#{url.custom}
+        %p ID: http://#{settings.address}/#{url.id} 
+        
