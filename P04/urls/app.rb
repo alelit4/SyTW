@@ -43,6 +43,10 @@ get '/show' do
 end
 
 
+get '/search' do
+  haml :search
+end
+
 
 post '/search_url' do
     begin
