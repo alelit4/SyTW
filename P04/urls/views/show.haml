@@ -3,3 +3,6 @@
     %h1 URL #{i[0].id}
     %p URL corto = http://#{settings.address}/#{i[0].id}
     %p ULR largo = #{i[1]} 
+    -if url.custom
+        %b CUSTOM: 
+        http://#{settings.address}/#{i[2].custom}
