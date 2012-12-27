@@ -23,6 +23,7 @@ get '/' do
   haml :index
 end
 
+
 post '/' do
   @short_url = ShortenedUrl.find_or_create_by_url(params[:url])
   if @short_url.valid?
@@ -32,9 +33,38 @@ post '/' do
   end
 end
 
-
-get '/:shortened' do
-  short_url = ShortenedUrl.find(params[:shortened].to_i(36))
-  redirect short_url.url
+get '/show' do
+  urls = ShortenedUrl.find(:all)
+  @all_urls = []
+  urls.each do |t|
+    @all_urls.push([t, t.url])
+  end
+  haml :show
 end
 
+
+
+post '/search_url' do
+    begin
+        @url = ShortenedUrl.find_by_url params[:url]
+    rescue
+        @url = nil
+    end
+    haml :results
+end
+
+
+post '/search_id' do
+    begin 
+        @url = ShortenedUrl.find_by_id params[:url].to_i(36)
+    rescue
+        @url = nil
+    end
+    haml :results
+end
+
+
+get '/:shortened' do
+  short_url = ShortenedUrl.find_by_url(params[:shortened].to_i(36))
+  redirect short_url.url
+end

@@ -1,0 +1,5 @@
+- if @url.nil?
+    %h1 Error! Url no encontrada!
+- else
+    %p URL corto = http://#{settings.address}/#{@url.id}
+    %p ULR largo = #{@url.url} 

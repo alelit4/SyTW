@@ -1,8 +1,24 @@
 !!!
 %html
     %body
-        =yield
+        %a(href="/show")Show all URLs
+     
         %form(action="/" method="POST")
             %label(for="url")
             %input(type="text" name="url" id="url" accesskey="s")
             %input(type="submit" value="Shorten")
+        
+        %h2 Search Form URL
+        %form(action="/search_url" method="POST")
+            %label(for="url")
+            %input(type="text" name="url" id="url" placeholder="Introduce URL largo")
+            %input(type="submit" value="Find by URL" class="shorten")
+         
+        %h2 Search Form id
+        %form(action="/search_id" method="POST")
+            %label(for="url")
+            %input(type="text" name="url" id="url" placeholder="Introduce ID")
+            %input(type="submit" value="Find by ID" class="shorten")
+        
+        =yield
+        
