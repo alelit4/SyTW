@@ -1,24 +1,30 @@
 # coding: utf-8
 require 'sinatra'
-
-
-set server: 'thin', connections: []
+set server: 'thin', users: {}
 
 get '/' do
   halt erb(:login) unless params[:user]
   erb :chat, locals: { user: params[:user].gsub(/\W/, '') }
 end
 
-get '/stream', provides: 'text/event-stream' do
+get '/stream/:user', provides: 'text/event-stream' do
   stream :keep_open do |out|
-    settings.connections << out
-    out.callback { settings.connections.delete(out) }
+    settings.users[params[:user]] = out
+    out.callback { settings.users.delete out }
   end
 end
 
 post '/' do
-  settings.connections.each { |out| out << "data: #{params[:msg]}\n\n" }
-  204 # response without entity body
+  nick = /\/(.+):.*/
+  user = nick.match(params[:msg])
+  if user.nil?
+  mensaje = "<span class=\"nick\">#{params[:user]}:</span> <span class=\"mensaje\">#{params[:msg]}</span>\n"
+    settings.users.each_pair { |user, out| out << "data: #{mensaje}\n" }
+  else
+    settings.users[user[1]] << "data: <b>Private msg from #{params[:user]}  :</b> #{params[:msg].gsub(/\/(.+):/, '')}\n\n"
+    settings.users[params[:user]] << "data: <b> Private msg to #{user[1]} :</b> #{params[:msg].gsub(/\/(.+):/, '')}\n\n"
+  end
+  204
 end
 
 __END__
@@ -29,14 +35,22 @@ __END__
     <title>Super Simple Chat with Sinatra</title> 
     <meta charset="utf-8" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
-    <link href="/css/bootstrap.css" rel="stylesheet">  
-  <body><%= yield %></body>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+  </head>  
+  <body>
+    <div class="row-fluid">
+      <div class="span4 offset3">
+        <h1> Super Simple Chat </h1>
+      </div>
+    </div>
+    <%= yield %>
+  </body>
 </html>
 
 @@ login
 <div class="row-fluid">
   <div class="span4 offset3">
-    <h1> Bienvenido al Super Simple Chat </h1>
+    <h1> Bienvenido !! </h1>
   </div>
 </div>
 <div class="row-fluid">
@@ -50,25 +64,39 @@ __END__
 </div>
 
 @@ chat
+
 <div class="row-fluid">
   <div class="span4 offset3">
-    <h1> Super Simple Chat </h1>
+    <div align= "center">
+      <h2>Hola <%= user %>! </h2>
+    </div>
   </div>
-</div>
-<pre id='chat'></pre>
+</div> 
+
+<div class="row-fluid">
+  <div class="span6 offset2">
+      <pre id='chat'></pre>
+  </div>
+</div> 
+    
 <script>
   // reading
-  var es = new EventSource('/stream');
+  var url = "/stream/" + "<%= user %>"
+  var es = new EventSource(url);
   es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
 
   // writing
   $("form").live("submit", function(e) {
-    $.post('/', {msg: "<%= user %>: " + $('#msg').val()});
+    $.post('/', {user: "<%= user %>", msg: $('#msg').val()});
     $('#msg').val(''); $('#msg').focus();
     e.preventDefault();
   });
 </script>
 
-<form>
-  <input id='msg' placeholder='type message here...' />
-</form>
+<div class="row-fluid">
+  <div class="span8 offset">
+    <form>
+      <input id='msg' placeholder='type message here...' />
+    </form>
+  </div>
+</div>     
