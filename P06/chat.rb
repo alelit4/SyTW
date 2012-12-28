@@ -29,20 +29,33 @@ __END__
     <title>Super Simple Chat with Sinatra</title> 
     <meta charset="utf-8" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
-  </head> 
+    <link href="/css/bootstrap.css" rel="stylesheet">  
   <body><%= yield %></body>
 </html>
 
 @@ login
-<form action='/'>
-  <label for='user'>User Name:</label>
-  <input name='user' value='' />
-  <input type='submit' value="GO!" />
-</form>
+<div class="row-fluid">
+  <div class="span4 offset3">
+    <h1> Bienvenido al Super Simple Chat </h1>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span4 offset3">
+    <form action='/'>
+      <label for='user'>User Name:</label>
+      <input name='user' value='' />
+      <input type='submit' value="GO!" />
+    </form>
+  </div>
+</div>
 
 @@ chat
+<div class="row-fluid">
+  <div class="span4 offset3">
+    <h1> Super Simple Chat </h1>
+  </div>
+</div>
 <pre id='chat'></pre>
-
 <script>
   // reading
   var es = new EventSource('/stream');
