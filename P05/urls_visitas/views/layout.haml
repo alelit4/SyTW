@@ -1,0 +1,37 @@
+!!!
+%html
+    %header
+        %link(rel="stylesheet" type="text/css" href="css/bootstrap.css")
+        %script{:src => "js/jquery-1.8.3.min.js"}
+    %body
+        %div{:class => "row-fluid"}
+            %div{:class => "span8 offset2", :id => "title"}
+                %h1 Acortador de URLs
+        
+        %div{:class => "row-fluid"}
+            %div{:class => "span4 offset4"}         
+                %form(action="/" method="POST")
+                    %label(for="url") Añada una nueva URL para acortar!
+                    %input(type="text" name="url" id="url" placeholder="Introduce URL to short" )
+                    %label(for="custom") puede añadirle un Custom (optional)
+                    %input(type="text" name="custom" id="custom" placeholder="Introduce custom URL")
+                    %input(type="submit" value="Shorten" class="shorten" )
+        
+       
+        %div{:class => "row-fluid", :id => "opciones" }  
+            %div{:class => "span3 offset3"}
+                %a(href="/show")Ver todas las URLs
+            
+            %div{:class => "span3 "}
+                %a(href="/search")Buscar alguna URLs  
+        
+            
+               
+        =yield
+        
+        %footer
+            %div{:class => "row-fluid"}  
+                %div{:class => "span2 offset8"}
+                    %div{:class => "footer"}  
+                        %p Alexandra Rivero
+          
