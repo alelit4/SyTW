@@ -18,12 +18,17 @@ post '/' do
   nick_name = /\/(.+):.*/
   user = nick_name.match(params[:msg])
   if user.nil?
-  mensaje = "<span class=\"nick\">#{params[:user]}:</span> <span class=\"mensaje\">#{params[:msg]}</span>\n"
+    mensaje = "<span class=\"nick\">#{params[:user]}:</span> <span class=\"mensaje\">#{params[:msg]}</span>\n"
     settings.users.each_pair { |user, out| out << "data: #{mensaje}\n" }
   else
-    settings.users[user[1]] << "data: <b> Mensaje privado de #{params[:user]}  :</b> #{params[:msg].gsub(/\/(.+):/, '')}\n\n"
-    settings.users[params[:user]] << "data: <b> Mensaje privado para #{user[1]} :</b> #{params[:msg].gsub(/\/(.+):/, '')}\n\n"
-  end
+    mensaje1 = []
+    mensaje2 = []
+    mensaje1 << "<b>Private msg from #{params[:user]}  :</b> #{params[:msg].gsub(/\/(.+):/, '')}"
+    mensaje2 << "<b> Private msg to #{user[1]} :</b> #{params[:msg].gsub(/\/(.+):/, '')}"
+    settings.users.keys.each{|key| mensaje1 << key}
+    settings.users.keys.each{|key| mensaje2 << key}
+    settings.users[user[1]] << "data: #{mensaje1}\n\n"
+    settings.users[params[:user]] << "data: #{mensaje2}\n\n" end
   204
 end
 
@@ -79,7 +84,8 @@ __END__
   </div>
   <div class="span4 offset">
       <h1>Usuarios</h1>
-      
+      <div id ="usuarios">
+      </div>
   </div>
 
 </div> 
@@ -88,7 +94,17 @@ __END__
   // reading
   var es = new EventSource("/stream/" + "<%= user %>");
   es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
-
+  
+  //list users 
+  function all_users(users){
+      list = "<ul>"
+      for (var i=1;i<users.length;i++){
+        list = list+"<li>"+users[i]+"</li>"
+      }
+      list = list + "</ul>"
+      $("#usuarios").html(list);
+    }
+    
   // writing
   $("form").live("submit", function(e) {
     $.post('/', {user: "<%= user %>", msg: $('#msg').val()});
