@@ -26,8 +26,8 @@ post '/' do
   else
     mensaje1 = []
     mensaje2 = []
-    mensaje1 << "<b>Private msg from #{params[:user]}  :</b> #{params[:msg].gsub(/\/(.+):/, '')}"
-    mensaje2 << "<b> Private msg to #{user[1]} :</b> #{params[:msg].gsub(/\/(.+):/, '')}"
+    mensaje1 << "<b> Mensaje privado de #{params[:user]}  :</b> #{params[:msg].gsub(/\/(.+):/, '')}"
+    mensaje2 << "<b> Mensaje privado para #{user[1]} :</b> #{params[:msg].gsub(/\/(.+):/, '')}"
     settings.users.keys.each{|key| mensaje1 << key}
     settings.users.keys.each{|key| mensaje2 << key}
     settings.users[user[1]] << "data: #{mensaje1}\n\n"
