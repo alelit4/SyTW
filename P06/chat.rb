@@ -15,14 +15,14 @@ get '/stream/:user', provides: 'text/event-stream' do
 end
 
 post '/' do
-  nick = /\/(.+):.*/
-  user = nick.match(params[:msg])
+  nick_name = /\/(.+):.*/
+  user = nick_name.match(params[:msg])
   if user.nil?
   mensaje = "<span class=\"nick\">#{params[:user]}:</span> <span class=\"mensaje\">#{params[:msg]}</span>\n"
     settings.users.each_pair { |user, out| out << "data: #{mensaje}\n" }
   else
-    settings.users[user[1]] << "data: <b>Private msg from #{params[:user]}  :</b> #{params[:msg].gsub(/\/(.+):/, '')}\n\n"
-    settings.users[params[:user]] << "data: <b> Private msg to #{user[1]} :</b> #{params[:msg].gsub(/\/(.+):/, '')}\n\n"
+    settings.users[user[1]] << "data: <b> Mensaje privado de #{params[:user]}  :</b> #{params[:msg].gsub(/\/(.+):/, '')}\n\n"
+    settings.users[params[:user]] << "data: <b> Mensaje privado para #{user[1]} :</b> #{params[:msg].gsub(/\/(.+):/, '')}\n\n"
   end
   204
 end
@@ -81,8 +81,7 @@ __END__
     
 <script>
   // reading
-  var url = "/stream/" + "<%= user %>"
-  var es = new EventSource(url);
+  var es = new EventSource("/stream/" + "<%= user %>");
   es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
 
   // writing
@@ -94,7 +93,7 @@ __END__
 </script>
 
 <div class="row-fluid">
-  <div class="span8 offset">
+  <div class="span4 offset2">
     <form>
       <input id='msg' placeholder='type message here...' />
     </form>
