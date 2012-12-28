@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'haml'
+require 'xmlsimple'
+require 'rest_client'
 
 set :database, 'sqlite3:///shortened_urls.db'
 set :address, 'localhost:4567'
@@ -18,6 +20,10 @@ class ShortenedUrl < ActiveRecord::Base
        :message => "The URL must start with http://, https://, or ftp:// ."
 end
 
+class Countries < ActiveRecord::Base
+  # Validates whether the value of the specified attributes are unique across the system.
+  validates_uniqueness_of :url, :scope => :country
+end
 
 get '/' do
   haml :index
@@ -37,6 +43,13 @@ post '/' do
     haml :index
   end
 end
+
+get '/paises' do
+  @all_countries = Countries.find :all
+  haml :countries
+
+end
+
 
 get '/show' do
   @all_urls = ShortenedUrl.find(:all)
@@ -70,6 +83,19 @@ end
 
 
 get '/:shortened' do
-  short_url = ShortenedUrl.find_by_url(params[:shortened].to_i(36))
+  
+  short_url ||= ShortenedUrl.find_by_id(params[:shortened].to_i(36))
+  short_url ||= ShortenedUrl.find_by_custom(params[:shortened].to_i(36))
+
+  xml = RestClient.get "http://api.hostip.info/get_xml.php?ip=#{request.ip}"
+  country = XmlSimple.xml_in(xml.to_s, { 'ForceArray' => false })['featureMember']['Hostip']['countryAbbrev']
+  
+  @URL = Countries.find_or_create_by_url_and_country(short_url.url, country)
+  @URL.count = @URL.count + 1
+  @URL.save
+ 
   redirect short_url.url
+
 end
+
+

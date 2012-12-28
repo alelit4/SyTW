@@ -19,13 +19,14 @@
         
        
         %div{:class => "row-fluid", :id => "opciones" }  
-            %div{:class => "span3 offset3"}
+            %div{:class => "span2 offset3"}
                 %a(href="/show")Ver todas las URLs
             
-            %div{:class => "span3 "}
-                %a(href="/search")Buscar alguna URLs  
-        
+            %div{:class => "span2 "}
+                %a(href="/search")Buscar alguna URLs 
             
+            %div{:class => "span2 "}
+                %a{:href => "/paises"}Ver Visitas
                
         =yield
         

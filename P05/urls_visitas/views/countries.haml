@@ -1,0 +1,14 @@
+%div{:class => "row-fluid"}         
+    %div{:class => "span6 offset4"}  
+        %h2 Visitas a las URLs
+- @all_countries.each do |c|
+    %div{:class => "row-fluid"}         
+        %div{:class => "span10 offset2" , :id => "url"} 
+            %h6 URL:
+            %div{:class => "span6"}
+                %a(href="#{c.url}") #{c.url}
+            %div{:class => "span2"}
+                %p Pa&iacutes: #{c.country}
+            %div{:class => "span2"}
+                %p Visitas: #{c.count} 
+            
