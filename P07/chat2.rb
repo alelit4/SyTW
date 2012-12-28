@@ -10,7 +10,7 @@ end
 get '/stream/:user', provides: 'text/event-stream' do
   stream :keep_open do |out|
     settings.users[params[:user]] = out
-    out.callback { puts 'closed'; settings.users.delete out }
+    out.callback {settings.users.delete(settings.users.key out) }
   end
 end
 
@@ -18,8 +18,11 @@ post '/' do
   nick_name = /\/(.+):.*/
   user = nick_name.match(params[:msg])
   if user.nil?
-    mensaje = "<span class=\"nick\">#{params[:user]}:</span> <span class=\"mensaje\">#{params[:msg]}</span>\n"
-    settings.users.each_pair { |user, out| out << "data: #{mensaje}\n" }
+    mensaje = []
+    mensaje << "#{params[:user]} : #{params[:msg]}"
+    settings.users.keys.each{|key| mensaje << key}
+    settings.users.each_pair { |user, out| out << "data: #{mensaje} \n\n" }
+    204 # response without entity body
   else
     mensaje1 = []
     mensaje2 = []
@@ -28,8 +31,9 @@ post '/' do
     settings.users.keys.each{|key| mensaje1 << key}
     settings.users.keys.each{|key| mensaje2 << key}
     settings.users[user[1]] << "data: #{mensaje1}\n\n"
-    settings.users[params[:user]] << "data: #{mensaje2}\n\n" end
-  204
+    settings.users[params[:user]] << "data: #{mensaje2}\n\n"
+    204 # response without entity body
+  end
 end
 
 __END__
@@ -91,26 +95,27 @@ __END__
 </div> 
     
 <script>
-  // reading
-  var es = new EventSource("/stream/" + "<%= user %>");
-  es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
-  
-  //list users 
-  function all_users(users){
-      list = "<ul>"
+    // reading
+    var es = new EventSource("/stream/" + "<%= user %>");
+    es.onmessage = function(e) { 
+      data = eval(e.data)
+      $('#chat').append(data[0] + "\n")
+      list(data);
+    };
+    function list(users){
+      lista = "<ul>"
       for (var i=1;i<users.length;i++){
-        list = list+"<li>"+users[i]+"</li>"
+  lista = lista+"<li>"+users[i]+"</li>"
       }
-      list = list + "</ul>"
-      $("#usuarios").html(list);
+      lista = lista + "</ul>"
+      $("#usuarios").html(lista);
     }
-    
-  // writing
-  $("form").live("submit", function(e) {
-    $.post('/', {user: "<%= user %>", msg: $('#msg').val()});
-    $('#msg').val(''); $('#msg').focus();
-    e.preventDefault();
-  });
+    // writing
+    $("form").live("submit", function(e) {
+      $.post('/', {user: "<%= user %>", msg: $('#msg').val() });
+      $('#msg').val(''); $('#msg').focus();
+      e.preventDefault();
+    });
 </script>
 
 <div class="row-fluid">
